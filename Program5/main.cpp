@@ -1,8 +1,8 @@
 // Student Course Manager
 // Displays the students current class schedule. Can add and delete classes with respective information and
-// look up classes using course/class ID. Can read and write to exisiting and new files.
+// look up classes using course ID. Can read and write to exisiting and new files.
 // Kristophe F. Dizon
-// April 27, 2020
+// May 3, 2020
 
 #include <iostream> // header file to access strings/cin/cout/etc
 #include <fstream> // header file to access file streams
@@ -11,8 +11,8 @@
 
 using namespace std;
 
-// Initailizes array with all data in input file
-// Pre: student is an array, inData is a valid file stream
+// Initailizes linked list with all data from input file
+// Pre: inData is a valid file stream
 // Post: Initializes student array with all data from input file
 CourseInfo *InitNode (/* IN/OUT */ifstream &inData);
 
@@ -21,31 +21,32 @@ CourseInfo *InitNode (/* IN/OUT */ifstream &inData);
 // Post: appends a declared and initialized node to the end of a valid link list
 void AddNode(/* IN/OUT */CourseInfo *&headPtr,/* IN */ CourseInfo *newNodePtr);
 
-// Displays all menu 
+// Displays menu 
 // Pre: None
-// Post: Displays options to user
+// Post: returns int of respective selection choice
 int PrintMenu();
 
-// returns enum type of Day depending on day of week M-F
+// returns enum of type 'Days' depending on day of week M-F
 // Pre: string must contain a day during the week, M-F
-// Post: returns an enum of Day to be used in DaysToStr()
+// Post: returns an enum of type 'Day' to be used in DaysToStr()
 Days StrToDay(/* IN */ string str);
 
 // Returns day of week 
-// Pre: StrToDay() returns a valid value within enum type Days
+// Pre: StrToDay() returns a valid value within enum type of 'Days'
 // Post: returns a string of the day of week dependent on enum value
 string DaysToStr (/* IN */string str);
 
 // Prompt user for file name and return ifstream
-// Pre: inData declared
+// Pre: inData declared and initialized to valid input file stream
+//      filename intialized variable of type string
 // Post: inData contains valid ifstream for data file
 void GetFileInfo(/* IN/OUT */string &fileName, /* IN/OUT */ifstream &inData);
 
-// Stores data from program into given output file.
-// Pre: fileName is initilzied with a valid file and file stream is valid
-//      counter contains correct length of student array
-//      student array is intialized and delcared      
-// Post: data at every index in student array is output into outData
+// Stores data from linked list into given output file.
+// Pre: fileName is initilzied with a valid file
+//      output file stream is valid
+//      student linked list is intialized and delcared      
+// Post: data from every node in student linked list is output into outData
 void StoreData(/* IN */string fileName, /* IN/OUT */ ofstream &outData,/* IN */CourseInfo *student);
 
 // Removes value from list
