@@ -68,10 +68,10 @@ void PrintList(/* IN */CourseInfo *studentPtr);
 // Post: loop through each node and find respective node
 void FindCourse (/* IN */CourseInfo *headPtr);
 
-// Capatilizes all chars in a string
+// Capatilizes all chars in a string (primarily going to be used for course ID)
 // Pre: string passed is initialized and declared
 // Post: returns string in all caps
-string toUpperString(string &str);
+string ToUpperString(string &str);
 
 int main()
 {
@@ -181,7 +181,7 @@ CourseInfo *InitNode (/* IN/OUT */ifstream &inData)
     
     getline(inData,student->course.courseID, ',');
     // Capatilize every letter of courseID
-    toUpperString(student->course.courseID);
+    ToUpperString(student->course.courseID);
     
     getline(inData,student->meetingDays, ',');
     getline(inData,student->meetingTimes, ',');
@@ -220,7 +220,7 @@ void FindCourse (/* IN/OUT */CourseInfo *headPtr)
         };
         cin.clear();
         cin.ignore(1000,'\n');
-        toUpperString(findID);
+        ToUpperString(findID);
 
         while(currPtr != nullptr)
         {
@@ -385,7 +385,6 @@ CourseInfo *CreateNode()
     cout << "Course name: ";
     getline(cin, courseName, '\n');
     newNodePtr->course.courseName = courseName;
-    cout << newNodePtr->course.courseName << endl;
     cin.clear();
 
     // get course ID and store into student
@@ -397,7 +396,7 @@ CourseInfo *CreateNode()
         cin.clear();
         cin.ignore(1000,'\n');
     };
-    toUpperString(newNodePtr->course.courseID);
+    ToUpperString(newNodePtr->course.courseID);
 
     // get course meeting days and store into student
     // only one day can be stored at a time
@@ -456,7 +455,7 @@ void DeleteNode(/* IN/OUT */CourseInfo *&headPtr)
     // take user input for value to delete from list and store into value variable
     cout << "Enter course ID for respective course to delete: ";
     cin >> delvalue;
-    toUpperString(delvalue);
+    ToUpperString(delvalue);
 
 
     // if currPtr is equal to value to find and prevPtr = nullptr then value to delete is the headPtr
@@ -514,7 +513,7 @@ void PrintList(/* IN */CourseInfo *studentPtr)
     } 
 }                         
 
-string toUpperString(string &str)
+string ToUpperString(string &str)
 {
     int size = str.size();
     char c;
