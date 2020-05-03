@@ -72,7 +72,7 @@ void FindCourse (/* IN */CourseInfo *headPtr);
 // Capatilizes all chars in a string (primarily going to be used for course ID)
 // Pre: string passed is initialized and declared
 // Post: returns string in all caps
-string ToUpperString(string &str);
+string ToUpperString(/* IN/OUT */string &str);
 
 int main()
 {
@@ -234,11 +234,13 @@ void FindCourse (/* IN/OUT */CourseInfo *headPtr)
             }
             currPtr = currPtr->next;
         }
+        // if course not found, alert use
         if (!found)
         {
             cout << "\n*** Course " << findID << " not found ***\n";
         }
         
+        // ask user to continue looking up courses
         cout << "Continue looking-up courses (y/n): ";
         cin >> choice;
     }while(toupper(choice) != 'N');
@@ -514,10 +516,12 @@ void PrintList(/* IN */CourseInfo *studentPtr)
     } 
 }                         
 
-string ToUpperString(string &str)
+string ToUpperString(/* IN/OUT */string &str)
 {
     int size = str.size();
     char c;
+
+    // loop through every index of a string and capitlize every letter
     for (int i = 0; i < size; i++)
     {
         if(str[i] != toupper(str[i]))
@@ -527,5 +531,6 @@ string ToUpperString(string &str)
             str[i] = str[i];
         }
     }
+    // return string in capitalized form
     return str;
 };
