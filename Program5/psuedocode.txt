@@ -1,0 +1,115 @@
+Reuse student struct with information about classes that's not ID or NAME
+Reuse day enum // Monday,Tuesday,Wednesday,Thursday,Friday
+Reuse additional struct class name, id
+
+Include fstream for creating file
+
+Reuse function for enum 
+
+update function addcourse()
+update function findcourse()
+update function printcourses()
+update function deletecourses()
+
+Create function storedata() 
+create header file to store structs and enum
+
+reuse getfileinfo() function
+
+Convert all functions to use link list
+
+-----------------------------------------------------
+
+#include "course header file"
+
+Main
+	//create a null head pointer of struct type
+        courseInfo *student = null
+	// create file streams for input and output file
+	ifstream indata
+	ofstream outdate
+
+	// name of file output/input
+	string filename
+
+	loop menu()
+	take user input
+		switch
+		printcourse()
+		addcourse()
+		findcourse()
+                deletecourse()
+                new schedule
+                getfileinfo() --- read exisiting schedule file
+	
+	// store data in given file name
+	storedata()
+				quit
+
+-----------------Functions----------------------------
+
+Printcourse(course *ptr)
+	
+	// check if ptr is null
+		//exit
+
+	// else
+	// loop while ptr != null
+		// display info at current node
+		// ptr = ptr->next
+
+Addcourse(course *ptr, course *newnode)
+	// check if ptr is null
+		//make new node = head
+	// else
+	// loop while ptr != null
+		// ptr=ptr->next
+        // insert newNode at end of list
+		//ptr->next= newNode
+
+findcourse(course *ptr)
+    	
+	// check if ptr is null
+		//exit
+
+	// else
+	// loop while ptr != null
+		// check if course to find == any node in list
+			// display data of node
+			// break
+		// ptr = ptr->next
+
+menu()
+	list options (1-7)
+	printcourse()
+	addcourse()
+	findcourse()
+        deletecourse()
+        new schedule
+        getfileinfo()
+	quit()
+	
+	*loop this in main*
+
+getfileinfo()
+    reuse from previous programs
+
+
+new schedule()
+    similiar to getfileinfo but dont loop to check if file exist
+
+delete course(course *ptr)
+
+	// local pointer variable
+	course *prev;
+
+    	
+	// check if ptr is null
+		//exit
+
+	// else
+	// loop while ptr != null
+		// ptr = ptr->next
+    	//prev = head;
+	// head = head->next; 
+	// delete ptr
